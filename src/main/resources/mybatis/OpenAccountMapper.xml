@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhaogang.spring.boot.business.mapper.OpenAccountMapper" >
+  <resultMap id="BaseResultMap" type="com.zhaogang.spring.boot.business.model.OpenAccount" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="MEMBER_ID" property="memberId" jdbcType="INTEGER" />
+    <result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
+    <result column="PAYCHANNEL_ID" property="paychannelId" jdbcType="INTEGER" />
+    <result column="MERCHANT_ID" property="merchantId" jdbcType="INTEGER" />
+    <result column="LINKMAN" property="linkman" jdbcType="VARCHAR" />
+    <result column="IDENTITY_CARD_NO" property="identityCardNo" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="REGIST_ADDR" property="registAddr" jdbcType="VARCHAR" />
+    <result column="LICENCE_NO" property="licenceNo" jdbcType="VARCHAR" />
+    <result column="BANK_ACCOUNT" property="bankAccount" jdbcType="VARCHAR" />
+    <result column="BANK_NAME" property="bankName" jdbcType="VARCHAR" />
+    <result column="UKEY_ADDR" property="ukeyAddr" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="COUNTY" property="county" jdbcType="VARCHAR" />
+    <result column="OPEN_BANK_NAME" property="openBankName" jdbcType="VARCHAR" />
+    <result column="POST_CODE" property="postCode" jdbcType="INTEGER" />
+    <result column="OPEN_STATUS" property="openStatus" jdbcType="VARCHAR" />
+    <result column="CHECK_TIMES" property="checkTimes" jdbcType="INTEGER" />
+    <result column="SERIAL_NO" property="serialNo" jdbcType="VARCHAR" />
+    <result column="BANK_CODE" property="bankCode" jdbcType="VARCHAR" />
+    <result column="S_BANK_CODE" property="sBankCode" jdbcType="VARCHAR" />
+    <result column="ADDED_TIME" property="addedTime" jdbcType="TIMESTAMP" />
+    <result column="ADDED_BY" property="addedBy" jdbcType="INTEGER" />
+    <result column="ADDED_BY_NAME" property="addedByName" jdbcType="VARCHAR" />
+    <result column="LASTMODIFIED_TIME" property="lastmodifiedTime" jdbcType="TIMESTAMP" />
+    <result column="LASTMODIFIED_BY" property="lastmodifiedBy" jdbcType="INTEGER" />
+    <result column="LASTMODIFIED_BY_NAME" property="lastmodifiedByName" jdbcType="VARCHAR" />
+    <result column="VALID" property="valid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, MEMBER_ID, CUSTOMER_ID, PAYCHANNEL_ID, MERCHANT_ID, LINKMAN, IDENTITY_CARD_NO, 
+    MOBILE, COMPANY_NAME, REGIST_ADDR, LICENCE_NO, BANK_ACCOUNT, BANK_NAME, UKEY_ADDR, 
+    PROVINCE, CITY, COUNTY, OPEN_BANK_NAME, POST_CODE, OPEN_STATUS, CHECK_TIMES, SERIAL_NO, 
+    BANK_CODE, S_BANK_CODE, ADDED_TIME, ADDED_BY, ADDED_BY_NAME, LASTMODIFIED_TIME, LASTMODIFIED_BY, 
+    LASTMODIFIED_BY_NAME, VALID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_open_account
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_open_account
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhaogang.spring.boot.business.model.OpenAccount" >
+    insert into t_open_account (ID, MEMBER_ID, CUSTOMER_ID, 
+      PAYCHANNEL_ID, MERCHANT_ID, LINKMAN, 
+      IDENTITY_CARD_NO, MOBILE, COMPANY_NAME, 
+      REGIST_ADDR, LICENCE_NO, BANK_ACCOUNT, 
+      BANK_NAME, UKEY_ADDR, PROVINCE, 
+      CITY, COUNTY, OPEN_BANK_NAME, 
+      POST_CODE, OPEN_STATUS, CHECK_TIMES, 
+      SERIAL_NO, BANK_CODE, S_BANK_CODE, 
+      ADDED_TIME, ADDED_BY, ADDED_BY_NAME, 
+      LASTMODIFIED_TIME, LASTMODIFIED_BY, LASTMODIFIED_BY_NAME, 
+      VALID)
+    values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{customerId,jdbcType=VARCHAR}, 
+      #{paychannelId,jdbcType=INTEGER}, #{merchantId,jdbcType=INTEGER}, #{linkman,jdbcType=VARCHAR}, 
+      #{identityCardNo,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, 
+      #{registAddr,jdbcType=VARCHAR}, #{licenceNo,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, 
+      #{bankName,jdbcType=VARCHAR}, #{ukeyAddr,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, #{openBankName,jdbcType=VARCHAR}, 
+      #{postCode,jdbcType=INTEGER}, #{openStatus,jdbcType=VARCHAR}, #{checkTimes,jdbcType=INTEGER}, 
+      #{serialNo,jdbcType=VARCHAR}, #{bankCode,jdbcType=VARCHAR}, #{sBankCode,jdbcType=VARCHAR}, 
+      #{addedTime,jdbcType=TIMESTAMP}, #{addedBy,jdbcType=INTEGER}, #{addedByName,jdbcType=VARCHAR}, 
+      #{lastmodifiedTime,jdbcType=TIMESTAMP}, #{lastmodifiedBy,jdbcType=INTEGER}, #{lastmodifiedByName,jdbcType=VARCHAR}, 
+      #{valid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhaogang.spring.boot.business.model.OpenAccount" >
+    insert into t_open_account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="memberId != null" >
+        MEMBER_ID,
+      </if>
+      <if test="customerId != null" >
+        CUSTOMER_ID,
+      </if>
+      <if test="paychannelId != null" >
+        PAYCHANNEL_ID,
+      </if>
+      <if test="merchantId != null" >
+        MERCHANT_ID,
+      </if>
+      <if test="linkman != null" >
+        LINKMAN,
+      </if>
+      <if test="identityCardNo != null" >
+        IDENTITY_CARD_NO,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="registAddr != null" >
+        REGIST_ADDR,
+      </if>
+      <if test="licenceNo != null" >
+        LICENCE_NO,
+      </if>
+      <if test="bankAccount != null" >
+        BANK_ACCOUNT,
+      </if>
+      <if test="bankName != null" >
+        BANK_NAME,
+      </if>
+      <if test="ukeyAddr != null" >
+        UKEY_ADDR,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="county != null" >
+        COUNTY,
+      </if>
+      <if test="openBankName != null" >
+        OPEN_BANK_NAME,
+      </if>
+      <if test="postCode != null" >
+        POST_CODE,
+      </if>
+      <if test="openStatus != null" >
+        OPEN_STATUS,
+      </if>
+      <if test="checkTimes != null" >
+        CHECK_TIMES,
+      </if>
+      <if test="serialNo != null" >
+        SERIAL_NO,
+      </if>
+      <if test="bankCode != null" >
+        BANK_CODE,
+      </if>
+      <if test="sBankCode != null" >
+        S_BANK_CODE,
+      </if>
+      <if test="addedTime != null" >
+        ADDED_TIME,
+      </if>
+      <if test="addedBy != null" >
+        ADDED_BY,
+      </if>
+      <if test="addedByName != null" >
+        ADDED_BY_NAME,
+      </if>
+      <if test="lastmodifiedTime != null" >
+        LASTMODIFIED_TIME,
+      </if>
+      <if test="lastmodifiedBy != null" >
+        LASTMODIFIED_BY,
+      </if>
+      <if test="lastmodifiedByName != null" >
+        LASTMODIFIED_BY_NAME,
+      </if>
+      <if test="valid != null" >
+        VALID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="paychannelId != null" >
+        #{paychannelId,jdbcType=INTEGER},
+      </if>
+      <if test="merchantId != null" >
+        #{merchantId,jdbcType=INTEGER},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="identityCardNo != null" >
+        #{identityCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="registAddr != null" >
+        #{registAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceNo != null" >
+        #{licenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="ukeyAddr != null" >
+        #{ukeyAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="openBankName != null" >
+        #{openBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        #{postCode,jdbcType=INTEGER},
+      </if>
+      <if test="openStatus != null" >
+        #{openStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTimes != null" >
+        #{checkTimes,jdbcType=INTEGER},
+      </if>
+      <if test="serialNo != null" >
+        #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null" >
+        #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankCode != null" >
+        #{sBankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="addedTime != null" >
+        #{addedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addedBy != null" >
+        #{addedBy,jdbcType=INTEGER},
+      </if>
+      <if test="addedByName != null" >
+        #{addedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedTime != null" >
+        #{lastmodifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedBy != null" >
+        #{lastmodifiedBy,jdbcType=INTEGER},
+      </if>
+      <if test="lastmodifiedByName != null" >
+        #{lastmodifiedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null" >
+        #{valid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhaogang.spring.boot.business.model.OpenAccount" >
+    update t_open_account
+    <set >
+      <if test="memberId != null" >
+        MEMBER_ID = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null" >
+        CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="paychannelId != null" >
+        PAYCHANNEL_ID = #{paychannelId,jdbcType=INTEGER},
+      </if>
+      <if test="merchantId != null" >
+        MERCHANT_ID = #{merchantId,jdbcType=INTEGER},
+      </if>
+      <if test="linkman != null" >
+        LINKMAN = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="identityCardNo != null" >
+        IDENTITY_CARD_NO = #{identityCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="registAddr != null" >
+        REGIST_ADDR = #{registAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceNo != null" >
+        LICENCE_NO = #{licenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        BANK_ACCOUNT = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        BANK_NAME = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="ukeyAddr != null" >
+        UKEY_ADDR = #{ukeyAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        COUNTY = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="openBankName != null" >
+        OPEN_BANK_NAME = #{openBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        POST_CODE = #{postCode,jdbcType=INTEGER},
+      </if>
+      <if test="openStatus != null" >
+        OPEN_STATUS = #{openStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTimes != null" >
+        CHECK_TIMES = #{checkTimes,jdbcType=INTEGER},
+      </if>
+      <if test="serialNo != null" >
+        SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null" >
+        BANK_CODE = #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sBankCode != null" >
+        S_BANK_CODE = #{sBankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="addedTime != null" >
+        ADDED_TIME = #{addedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addedBy != null" >
+        ADDED_BY = #{addedBy,jdbcType=INTEGER},
+      </if>
+      <if test="addedByName != null" >
+        ADDED_BY_NAME = #{addedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedTime != null" >
+        LASTMODIFIED_TIME = #{lastmodifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedBy != null" >
+        LASTMODIFIED_BY = #{lastmodifiedBy,jdbcType=INTEGER},
+      </if>
+      <if test="lastmodifiedByName != null" >
+        LASTMODIFIED_BY_NAME = #{lastmodifiedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null" >
+        VALID = #{valid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhaogang.spring.boot.business.model.OpenAccount" >
+    update t_open_account
+    set MEMBER_ID = #{memberId,jdbcType=INTEGER},
+      CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      PAYCHANNEL_ID = #{paychannelId,jdbcType=INTEGER},
+      MERCHANT_ID = #{merchantId,jdbcType=INTEGER},
+      LINKMAN = #{linkman,jdbcType=VARCHAR},
+      IDENTITY_CARD_NO = #{identityCardNo,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      REGIST_ADDR = #{registAddr,jdbcType=VARCHAR},
+      LICENCE_NO = #{licenceNo,jdbcType=VARCHAR},
+      BANK_ACCOUNT = #{bankAccount,jdbcType=VARCHAR},
+      BANK_NAME = #{bankName,jdbcType=VARCHAR},
+      UKEY_ADDR = #{ukeyAddr,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      COUNTY = #{county,jdbcType=VARCHAR},
+      OPEN_BANK_NAME = #{openBankName,jdbcType=VARCHAR},
+      POST_CODE = #{postCode,jdbcType=INTEGER},
+      OPEN_STATUS = #{openStatus,jdbcType=VARCHAR},
+      CHECK_TIMES = #{checkTimes,jdbcType=INTEGER},
+      SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      BANK_CODE = #{bankCode,jdbcType=VARCHAR},
+      S_BANK_CODE = #{sBankCode,jdbcType=VARCHAR},
+      ADDED_TIME = #{addedTime,jdbcType=TIMESTAMP},
+      ADDED_BY = #{addedBy,jdbcType=INTEGER},
+      ADDED_BY_NAME = #{addedByName,jdbcType=VARCHAR},
+      LASTMODIFIED_TIME = #{lastmodifiedTime,jdbcType=TIMESTAMP},
+      LASTMODIFIED_BY = #{lastmodifiedBy,jdbcType=INTEGER},
+      LASTMODIFIED_BY_NAME = #{lastmodifiedByName,jdbcType=VARCHAR},
+      VALID = #{valid,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="queryByParams" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_open_account
+    where VALID = 1
+    <if test="map.customerId !=null and map.customerId !='' ">
+	    and CUSTOMER_ID = #{map.customerId,jdbcType=VARCHAR}
+	</if>
+	<if test="map.payChannelId !=null and map.payChannelId !='' ">
+	    and PAYCHANNEL_ID = #{map.payChannelId,jdbcType=INTEGER}
+	</if>
+  </select>
+  
+</mapper>
